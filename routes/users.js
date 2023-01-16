@@ -8,7 +8,7 @@ const {
     removeUsers 
 } = require("../controllers/users");
 
-router.get("/". findAllUsers);
+router.get("/", findAllUsers);
 router.get("/:id", findUsersById);
 router.post("/", createUsers);
 router.patch("/:id", updateUsers);
