@@ -35,7 +35,7 @@ const {
  *  get:
  *      tags:
  *          - Users
- *      summary: Retrieve a list of users
+ *      summary: Retrieve all users
  *      description: An API to fetch a list of all the users from a user table
  *      responses:
  *          200:
@@ -68,7 +68,6 @@ router.get("/", findAllUsers);
  *          -   name: id
  *              in: path
  *              required: true
- *              description: user id
  *              schema:
  *                  type: integer
  *                  format: int64
@@ -146,12 +145,51 @@ router.post("/", createUsers);
 
 /**
  * @swagger
- * /api/users/{id}
+ * /api/users/{id}:
  *  patch:
  *      tags:
  *          - Users
  *      summary: Update user data
  *      description: An API to update user's data
+ *      parameters:
+ *          -   name: id
+ *              in: path
+ *              required: true
+ *              schema:
+ *                  type: integer
+ *                  format: int64
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                              description: enter your username
+ *                              example: admin001
+ *                          email:
+ *                              type: string
+ *                              description: enter your username
+ *                              example: admin001@test.com
+ *                          password:
+ *                              type: string
+ *                              description: enter your password
+ *                              example: admin001password1234
+ *      responses:
+ *          200:
+ *              description: User successfully update!
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              description:
+ *                                  type: string
+ *                                  example: User successfully updated!
+ *                          
+ *          
  */
 router.patch("/:id", updateUsers);
 router.delete("/:id", removeUsers);
