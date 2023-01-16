@@ -36,7 +36,7 @@ const {
  *      tags:
  *          - Users
  *      summary: Retrieve a list of users
- *      description: Fetch a list of all the users from a user table
+ *      description: An API to fetch a list of all the users from a user table
  *      responses:
  *          200:
  *              description: A list of users
@@ -63,7 +63,7 @@ router.get("/", findAllUsers);
  *      tags:
  *          - Users
  *      summary: Retrieve users by id
- *      description: Fetch a user by id from users table
+ *      description: An API to fetch a user by id from users table
  *      parameters:
  *          -   name: id
  *              in: path
@@ -100,7 +100,59 @@ router.get("/", findAllUsers);
  *                                          example: admin001password1234
  */
 router.get("/:id", findUsersById);
+
+/**
+ * @swagger
+ * /api/users/:
+ *  post:
+ *      tags:
+ *          - Users
+ *      summary: Create new user
+ *      description: An API to create new user
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                              description: enter your username
+ *                              example: admin001
+ *                          email:
+ *                              type: string
+ *                              description: enter your username
+ *                              example: admin001@test.com
+ *                          password:
+ *                              type: string
+ *                              description: enter your password
+ *                              example: admin001password1234
+ *      responses:
+ *          200:
+ *              description: Successfully created a new user!
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              description:
+ *                                  type: string
+ *                                  example: Successfully create a new user!
+ *                          
+ * 
+ */
 router.post("/", createUsers);
+
+/**
+ * @swagger
+ * /api/users/{id}
+ *  patch:
+ *      tags:
+ *          - Users
+ *      summary: Update user data
+ *      description: An API to update user's data
+ */
 router.patch("/:id", updateUsers);
 router.delete("/:id", removeUsers);
 
