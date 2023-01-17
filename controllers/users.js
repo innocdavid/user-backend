@@ -53,7 +53,7 @@ const findUsersById = asyncHandler(async(req, res) => {
 
 // update user
 const updateUsers = asyncHandler(async(req, res) => {
-    const user = await Users.update(req.params, { where: { id: req.params.id }});
+    const user = await Users.update(req.body, { where: { id: req.params.id }});
     res.status(200).json({
         description: `Successfully updated user of id: ${req.params.id}`
     });
