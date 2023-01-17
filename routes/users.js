@@ -192,6 +192,36 @@ router.post("/", createUsers);
  *          
  */
 router.patch("/:id", updateUsers);
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *  delete:
+ *      tags:
+ *          - Users
+ *      summary: Remove user by id
+ *      description: An API to remove user by id
+ *      parameters:
+ *          -   name: id
+ *              in: path
+ *              required: true
+ *              schema:
+ *                  type: integer
+ *                  format: int64
+ *      responses:
+ *          200:
+ *              description: User successfully deleted!
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              description:
+ *                                  type: string
+ *                                  example: User successfully deleted!
+ *                          
+ *      
+ */
 router.delete("/:id", removeUsers);
 
 module.exports = router;

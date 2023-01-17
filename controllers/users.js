@@ -36,9 +36,9 @@ const createUsers = asyncHandler(async(req, res) => {
         password: req.body.password
     }
 
-    const newUser = await Users(usersMap);
+    const newUser = await Users.create(usersMap);
     res.status(200).json({
-        description: "User successful created."
+        description: "User successfully created."
     });
 });
 
